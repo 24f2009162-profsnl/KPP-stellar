@@ -145,6 +145,36 @@ Twisha Shriyam
 IIT Madras BS
 Built under Rise In with Stellar (Started: 4th Feb 2026)
 
+## 🔧 Local Testing (Simulation)
+
+The KPP system was tested locally using Hardhat.
+
+### Flow Simulated:
+
+1. Deploy KPPToken contract (campus currency)
+2. Deploy KPPPoints contract (reward system)
+3. Add points to a user (simulating task completion)
+4. Convert points into KPP tokens
+5. Verify token balance update
+
+### Expected Output:
+
+Deployer: 0x...
+KPPToken deployed at: 0x...
+KPPPoints deployed at: 0x...
+
+Added 100 points
+Converted 50 points
+Final Token Balance: 50
+
+### Key Highlight:
+The conversion logic uses an inter-contract call:
+`IKPPToken(tokenAddress).mint(msg.sender, amount);`
+This ensures:
+- Points are deducted securely
+- Tokens are minted via a separate contract
+- System remains modular and extensible
+
 ## 🧪 Local Setup
 ```bash
 git clone <repo-link>
