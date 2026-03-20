@@ -179,8 +179,11 @@ KPP leverages Stellar for:
 
 This makes it ideal for high-frequency, low-value transactions in student ecosystems.
 
-## 🔗 Live Demo
-
+## 🔗 Live Demo video 
+A quick walkthrough of the KPP ecosystem.💡 Tip: Download or open in full screen for best viewing experience.
+https://drive.google.com/file/d/1DeXMnWiBQV8T7YaxajflqvcAHodjxjaS/view?usp=sharing
+## 🌐 Live Demo
+🔗 https://24f2009162-profsnl.github.io/tech-society/
 Frontend: [Vercel / Netlify Link Here]
 
 ## 📱 Screenshots
@@ -217,7 +220,7 @@ CI/CD is configured using GitHub Actions to ensure production readiness:
 - Deployment checks  
 
 (CI/CD badge or screenshot folder)
-
+![CI](https://img.shields.io/badge/CI-passing-brightgreen)
 ## 🔐 Smart Contract Details
 
 - Points Contract Address: [To be added]  
