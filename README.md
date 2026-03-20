@@ -158,6 +158,12 @@ Multi-campus deployment model
 Advanced reward mechanisms and incentives
 Error tracking and performance monitoring
 
+### Flow:
+
+User → Completes Task → Earns Points  
+Points Stored On-Chain → Converted to Tokens  
+Token Minted via KPPToken Contract  
+
 ## ⚡ Why Stellar?
 
 KPP leverages Stellar for:
@@ -200,7 +206,7 @@ CI/CD is configured using GitHub Actions to ensure production readiness:
 ## Author Details
 Twisha Shriyam
 IIT Madras BS
-Built under Rise In with Stellar (Started: 4th Feb 2026)
+Built under Rise In with Stellar (Started: 14th Feb 2026)
 
 ## 🔧 Local Testing (Simulation)
 
