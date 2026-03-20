@@ -167,7 +167,6 @@ Token Minted via KPPToken Contract
 ## ⚡ Why Stellar?
 
 KPP leverages Stellar for:
-
 - Low transaction fees (ideal for micro-payments)  
 - Fast settlement times  
 - Native asset support  
@@ -226,7 +225,6 @@ IIT Madras BS
 Built under Rise In with Stellar (Started: 14th Feb 2026)
 
 ## 🔧 Local Testing (Simulation)
-
 The KPP system was tested locally using Hardhat.
 
 ### Flow Simulated:
@@ -238,7 +236,6 @@ The KPP system was tested locally using Hardhat.
 5. Verify token balance update
 
 ### Expected Output:
-
 Deployer: 0x...
 KPPToken deployed at: 0x...
 KPPPoints deployed at: 0x...
