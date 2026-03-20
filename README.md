@@ -145,7 +145,6 @@ At the end of the semester:
 KPP does not directly handle fiat, keeping regulatory complexity minimal.
 
 ## 🎯 Real-World Use Cases
-
 - Campus task rewards (design, development, event support)  
 - Micro-payments between students  
 - Shared resource economy (cycles, power banks, notes)  
