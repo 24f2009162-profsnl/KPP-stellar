@@ -281,6 +281,14 @@ The MVP was tested with real users across multiple cities in India.
 
 *(Proof available included in submission assets)*
 
+### 📝 Feedback Form
+👉 https://forms.gle/gAWKNMU7fezn4Crb7
+
+### 📄 Response Data (Live)
+👉 https://docs.google.com/spreadsheets/d/1UJwscI9xSlXePAYfe2FeYVC7tYA18eYkRnT0YD3oRoI/edit?usp=sharing
+
+---
+This ensures that MVP testing is not simulated but based on actual user interaction.
 ---
 
 ## 🌍 Validation Strength
