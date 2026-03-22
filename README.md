@@ -178,16 +178,20 @@ KPP leverages Stellar for:
 - Real-world financial interoperability  
 
 This makes it ideal for high-frequency, low-value transactions in student ecosystems.
+## 🧩 MVP Architecture Note
+For Belt 5 MVP, frontend simulates blockchain logic using localStorage before full Stellar integration.
 
 ## 🔗 Live Demo video 
 A quick walkthrough of the KPP ecosystem.💡 Tip: Download or open in full screen for best viewing experience.
 https://drive.google.com/file/d/1DeXMnWiBQV8T7YaxajflqvcAHodjxjaS/view?usp=sharing
-## 🌐 Live Demo
+## 🌐 Live Demo series validation 
 🔗 https://24f2009162-profsnl.github.io/tech-society/
-Frontend: [Vercel / Netlify Link Here]
+Frontend
+# 🚀 Belt 5 Submission (MVP + User Validation)
+## 🌐 Live MVP
+👉 https://kpp-xi.vercel.app/
 
-## 📱 Screenshots
-
+## 📱 Screenshots (belt 4)
 - Mobile Responsive View  
 - Dashboard Interface  
 - Payment Flow (QR / Wallet)  
@@ -226,6 +230,22 @@ CI/CD is configured using GitHub Actions to ensure production readiness:
 - Points Contract Address: [To be added]  
 - Token Contract Address: [To be added]  
 - Transaction Hash (Inter-contract call): [To be added] 
+
+## 👥 User Validation Structure we pushing by tuesday 25th march 2026
+
+| User | Name | Action |
+|------|------|--------|
+| 1 | User1 | Tested earning + conversion |
+| 2 | User2 | Tested multi-user flow |
+| 3 | User3 | Tested UI + interactions |
+| 4 | User4 | Tested responsiveness |
+| 5 | User5 | Tested full flow |
+
+## 🧠 Feedback & Iteration so far till sunday 22nd march 2026
+
+- Users liked the simplicity of earning system  
+- Some confusion around conversion logic  
+- Iteration: Improved UI clarity and flow  
 
 ## Author Details
 Twisha Shriyam
