@@ -325,6 +325,7 @@ Test Wallet Connections:
 - Users can connect their Stellar wallet using Freighter  
 - Public key is fetched and displayed in the app  
 - This enables real identity layer for future transactions  
+
 Next step:
 - Integrate token minting and transactions on testnet
 
