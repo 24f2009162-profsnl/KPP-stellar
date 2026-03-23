@@ -13,7 +13,21 @@ This example project includes:
 - TypeScript integration tests using [`node:test`](nodejs.org/api/test.html), the new Node.js native test runner, and [`viem`](https://viem.sh/).
 - Examples demonstrating how to connect to different types of networks, including locally simulating OP mainnet.
 
-## Usage
+## 🔗 Stellar Integration (Testnet)
+
+Kaiitzn Pocket Pay (KPP) is designed to run on the Stellar network for real-world micro-transactions.
+
+### Current Status:
+- Smart contracts (KPPPoints + KPPToken) define reward and token logic  
+- Frontend MVP simulates the same flow for user validation  
+- System architecture is built for Stellar-based execution  
+
+### Integration Plan:
+- Connect frontend with Stellar wallet (Freighter/metamask)
+- Deploy contracts on Stellar testnet
+- Enable real token minting and transactions
+
+This ensures that the MVP is directly aligned with Stellar ecosystem integration and ready for deployment.
 
 ### Running Tests
 
