@@ -209,8 +209,8 @@ https://drive.google.com/file/d/1DeXMnWiBQV8T7YaxajflqvcAHodjxjaS/view?usp=shari
 Frontend
 # 🚀 Belt 5 Submission (MVP + User Validation)
 ## 🌐 Live MVP
-👉 https://kpp-xi.vercel.app/
-
+👉 https://kpp-xi.vercel.app/ 
+https://kpv-woad.vercel.app/
 ## 📱 Screenshots (belt 4)
 - Mobile Responsive View  
 - Dashboard Interface  
