@@ -31,24 +31,36 @@ function App() {
   };
 
   // 🔗 Wallet Connect
-  const connectWallet = async () => {
+  const waitForFreighter = async () => {
+  return new Promise((resolve) => {
+    let count = 0;
+
+    const interval = setInterval(() => {
+      if (window.freighterApi) {
+        clearInterval(interval);
+        resolve(window.freighterApi);
+      }
+
+      count++;
+      if (count > 10) {
+        clearInterval(interval);
+        resolve(null);
+      }
+    }, 300);
+  });
+};
+
+const connectWallet = async () => {
   try {
-    // Modern Freighter
-    if (window.freighterApi) {
-      const publicKey = await window.freighterApi.getPublicKey();
-      setWallet(publicKey);
+    const freighter = await waitForFreighter();
+
+    if (!freighter) {
+      setWallet("not-installed");
       return;
     }
 
-    // Fallback (older versions)
-    if (window.freighter) {
-      const publicKey = await window.freighter.getPublicKey();
-      setWallet(publicKey);
-      return;
-    }
-
-    // If nothing found → graceful UI message
-    setWallet("not-installed");
+    const publicKey = await freighter.getPublicKey();
+    setWallet(publicKey);
 
   } catch (e) {
     console.log(e);
