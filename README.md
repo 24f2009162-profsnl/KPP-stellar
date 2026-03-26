@@ -351,7 +351,7 @@ This validates real-world usability and scalability of the KPP MVP.
 ---
 
 ### Commits:
-25c8a4b (Users feedaback commit)
+6c3c0e8 (Users feedaback commit)
 1f70f21 (ci/cd pipeline commit)
 
 ## 🌐 Stellar Wallet Integration
