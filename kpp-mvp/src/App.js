@@ -1,5 +1,18 @@
 import { useState, useEffect } from "react";
 
+const ALL_USERS = [
+  "Riya Soni",
+  "Sunay Lahiri",
+  "Avyansh sharma",
+  "Yashovardhan",
+  "Anshu",
+  "Billaw",
+  "Aditya maru",
+  "Twisha",
+  "Gaurav",
+  "Shekhar"
+];
+
 function App() {
   const [name, setName] = useState("");
   const [user, setUser] = useState(null);
@@ -7,6 +20,7 @@ function App() {
   const [tokens, setTokens] = useState(0);
   const [history, setHistory] = useState([]);
   const [wallet, setWallet] = useState("");
+  const [leaderboard, setLeaderboard] = useState([]);
 
   // Load user data
   useEffect(() => {
@@ -16,9 +30,27 @@ function App() {
         tokens: 0,
         history: []
       };
+
       setPoints(data.points);
       setTokens(data.tokens);
       setHistory(data.history);
+
+      // 🎁 DAILY LOGIN BONUS
+      const today = new Date().toDateString();
+      const lastLogin = localStorage.getItem(user + "_lastLogin");
+
+      if (lastLogin !== today) {
+        const bonusPoints = data.points + 5;
+        const newHistory = [...data.history, "+5 Points (Daily Login Bonus 🎉)"];
+
+        setPoints(bonusPoints);
+        setHistory(newHistory);
+
+        localStorage.setItem(user + "_lastLogin", today);
+        saveData(bonusPoints, data.tokens, newHistory);
+      }
+
+      updateLeaderboard();
     }
   }, [user]);
 
@@ -28,49 +60,61 @@ function App() {
       tokens: t,
       history: h
     }));
+    updateLeaderboard();
+  };
+
+  // 🏆 Leaderboard logic
+  const updateLeaderboard = () => {
+    let usersData = ALL_USERS.map((u) => {
+      const d = JSON.parse(localStorage.getItem(u)) || { points: 0 };
+      return { name: u, points: d.points };
+    });
+
+    usersData.sort((a, b) => b.points - a.points);
+    setLeaderboard(usersData);
   };
 
   // 🔗 Wallet Connect
   const waitForFreighter = async () => {
-  return new Promise((resolve) => {
-    let count = 0;
+    return new Promise((resolve) => {
+      let count = 0;
 
-    const interval = setInterval(() => {
-      if (window.freighterApi) {
-        clearInterval(interval);
-        resolve(window.freighterApi);
+      const interval = setInterval(() => {
+        if (window.freighterApi) {
+          clearInterval(interval);
+          resolve(window.freighterApi);
+        }
+
+        count++;
+        if (count > 10) {
+          clearInterval(interval);
+          resolve(null);
+        }
+      }, 300);
+    });
+  };
+
+  const connectWallet = async () => {
+    try {
+      const freighter = await waitForFreighter();
+
+      if (!freighter) {
+        setWallet("not-installed");
+        return;
       }
 
-      count++;
-      if (count > 10) {
-        clearInterval(interval);
-        resolve(null);
-      }
-    }, 300);
-  });
-};
+      const publicKey = await freighter.getPublicKey();
+      setWallet(publicKey);
 
-const connectWallet = async () => {
-  try {
-    const freighter = await waitForFreighter();
-
-    if (!freighter) {
-      setWallet("not-installed");
-      return;
+    } catch (e) {
+      console.log(e);
     }
-
-    const publicKey = await freighter.getPublicKey();
-    setWallet(publicKey);
-
-  } catch (e) {
-    console.log(e);
-  }
-};
+  };
 
   // ➕ Earn Points
   const earnPoints = () => {
     const newPoints = points + 10;
-    const newHistory = [...history, `${user} earned 10 points`];
+    const newHistory = [...history, "+10 Points Earned"];
 
     setPoints(newPoints);
     setHistory(newHistory);
@@ -86,7 +130,7 @@ const connectWallet = async () => {
 
     const newHistory = [
       ...history,
-      `${user} converted 10 points → 5 tokens`
+      "-10 Points → +5 Tokens Converted"
     ];
 
     setPoints(newPoints);
@@ -102,7 +146,7 @@ const connectWallet = async () => {
     setWallet("");
   };
 
-  // 🟢 LOGIN SCREEN
+  // LOGIN SCREEN
   if (!user) {
     return (
       <div style={styles.bg}>
@@ -116,10 +160,7 @@ const connectWallet = async () => {
             style={styles.input}
           />
 
-          <button
-            onClick={() => setUser(name)}
-            style={styles.button}
-          >
+          <button onClick={() => setUser(name)} style={styles.button}>
             Start Earning
           </button>
         </div>
@@ -127,7 +168,7 @@ const connectWallet = async () => {
     );
   }
 
-  // 🟣 DASHBOARD
+  // DASHBOARD
   return (
     <div style={styles.bg}>
       <div style={styles.card}>
@@ -136,18 +177,20 @@ const connectWallet = async () => {
 
         {/* Wallet */}
         <button onClick={connectWallet} style={styles.walletBtn}>
-  {wallet
-    ? wallet === "not-installed"
-      ? "Install Freighter"
-      : "Wallet Connected ✅"
-    : "Connect Wallet"}
-</button>
+          {wallet
+            ? wallet === "not-installed"
+              ? "Install Freighter"
+              : "Wallet Connected ✅"
+            : "Connect Wallet"}
+        </button>
 
-{wallet && wallet !== "not-installed" && (
-  <p style={styles.walletText}>{wallet}</p>
-)}
+        {wallet && wallet !== "not-installed" && (
+          <p style={styles.walletText}>{wallet}</p>
+        )}
+
         <p>Points: {points}</p>
         <p>Tokens: {tokens}</p>
+        <p style={{ fontSize: "12px" }}>10 Points = 5 Tokens</p>
 
         <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
           <button onClick={earnPoints} style={styles.button}>
@@ -163,6 +206,16 @@ const connectWallet = async () => {
         <ul>
           {history.map((h, i) => (
             <li key={i}>{h}</li>
+          ))}
+        </ul>
+
+        {/* 🏆 LEADERBOARD */}
+        <h3 style={{ marginTop: "20px" }}>🏆 Leaderboard</h3>
+        <ul>
+          {leaderboard.map((u, i) => (
+            <li key={i}>
+              {i + 1}. {u.name} - {u.points} pts
+            </li>
           ))}
         </ul>
 
