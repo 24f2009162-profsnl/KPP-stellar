@@ -23,6 +23,8 @@ function App() {
   const [leaderboard, setLeaderboard] = useState([]);
 
   // Load user data
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => {
   useEffect(() => {
     if (user) {
       const data = JSON.parse(localStorage.getItem(user)) || {
