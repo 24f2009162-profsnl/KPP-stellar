@@ -331,6 +331,29 @@ This ensures that MVP testing is not simulated but based on actual user interact
 - Cross-device validation (mobile + desktop)  
 This validates real-world usability and scalability of the KPP MVP.
 
+## 🛠️ User Feedback Implemented
+### Feedback 1:
+“Daily login streak bonus”
+
+✅ Added:
+- Daily login reward (+5 points)
+- Auto tracked using localStorage
+
+---
+
+### Feedback 2:
+“Leaderboard and tracking users”
+
+✅ Added:
+- Real-time leaderboard
+- Multi-user comparison system
+
+---
+
+### Commits:
+25c8a4b (Users feedaback commit)
+1f70f21 (ci/cd pipeline commit)
+
 ## 🌐 Stellar Wallet Integration
 ## 👛 Testnet Users (Stellar)
 The following users participated in testing the KPP MVP:
